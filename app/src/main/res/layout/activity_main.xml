@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.alick.databinding.UserInfo"/>
+        <variable
+            name="userInfo"
+            type="UserInfo"/>
+        <variable
+            name="name1"
+            type="String"/>
+        <variable
+            name="clickListener1"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="clickListener2"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="presenter"
+            type="com.alick.databinding.MainActivity.Presenter"/>
+
+        <variable
+            name="str1"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={userInfo.userId}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{name1}"
+            />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toast1"
+            android:onClick="@{clickListener1}"
+            />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toast2"
+            android:onClick="@{clickListener2}"
+            />
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文本1"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onTextChanged="@{presenter.onTextChanged}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试回调userInfo对象"
+            android:onClick="@{()-> presenter.onGetUserinfo(userInfo)}"
+            />
+
+        <include layout="@layout/aaa"
+            bind:user1="@{userInfo}"
+            />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_test"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="方法1"
+            android:onClick="@{(String)-> presenter.getStr(str1)}"
+            />
+
+    </LinearLayout>
+</layout>
